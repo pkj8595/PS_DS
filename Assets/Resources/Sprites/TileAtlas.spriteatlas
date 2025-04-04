@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: TileAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 9f96a39a04c206545937417ca0bd7884, type: 3}
+    - {fileID: 102900000, guid: 7059e7517fa08844d8f9af0ed5d6bbb0, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+    packedSpriteRenderDataKeys:
+    - 6027d3f6e952b624bb4aad4393fe32c8: 1727398509
+    - 6027d3f6e952b624bb4aad4393fe32c8: 1041522433
+    - 6027d3f6e952b624bb4aad4393fe32c8: -44928832
+    - 6027d3f6e952b624bb4aad4393fe32c8: -890334010
+    - 6027d3f6e952b624bb4aad4393fe32c8: -34843057
+    - 6027d3f6e952b624bb4aad4393fe32c8: -1605083178
+    - 6027d3f6e952b624bb4aad4393fe32c8: 1343069007
+    - 6027d3f6e952b624bb4aad4393fe32c8: -1205183546
+    - 8a59f0b8bee01dd4dbdf0ced066ff4a8: 21300000
+    - d72f134a9ffc56c4aa84cd931b1bbf6c: 21300000
+    - 6ac2acea60d336e4592419a0fc597555: -1041016682
+    - 6ac2acea60d336e4592419a0fc597555: 1950720280
+    - 6ac2acea60d336e4592419a0fc597555: -1241476957
+    - 6ac2acea60d336e4592419a0fc597555: -479028568
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 1727398509, guid: 6027d3f6e952b624bb4aad4393fe32c8, type: 3}
+  - {fileID: 1041522433, guid: 6027d3f6e952b624bb4aad4393fe32c8, type: 3}
+  - {fileID: -44928832, guid: 6027d3f6e952b624bb4aad4393fe32c8, type: 3}
+  - {fileID: -890334010, guid: 6027d3f6e952b624bb4aad4393fe32c8, type: 3}
+  - {fileID: -34843057, guid: 6027d3f6e952b624bb4aad4393fe32c8, type: 3}
+  - {fileID: -1605083178, guid: 6027d3f6e952b624bb4aad4393fe32c8, type: 3}
+  - {fileID: 1343069007, guid: 6027d3f6e952b624bb4aad4393fe32c8, type: 3}
+  - {fileID: -1205183546, guid: 6027d3f6e952b624bb4aad4393fe32c8, type: 3}
+  - {fileID: 21300000, guid: 8a59f0b8bee01dd4dbdf0ced066ff4a8, type: 3}
+  - {fileID: 21300000, guid: d72f134a9ffc56c4aa84cd931b1bbf6c, type: 3}
+  - {fileID: -1041016682, guid: 6ac2acea60d336e4592419a0fc597555, type: 3}
+  - {fileID: 1950720280, guid: 6ac2acea60d336e4592419a0fc597555, type: 3}
+  - {fileID: -1241476957, guid: 6ac2acea60d336e4592419a0fc597555, type: 3}
+  - {fileID: -479028568, guid: 6ac2acea60d336e4592419a0fc597555, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - rotatingBladeTrap_3
+  - rotatingBladeTrap_2
+  - rotatingBladeTrap_1
+  - rotatingBladeTrap_0
+  - rotatingBladeTrap_7
+  - rotatingBladeTrap_6
+  - rotatingBladeTrap_5
+  - rotatingBladeTrap_4
+  - Arrow
+  - Arrow1
+  - arrowTrap_2
+  - arrowTrap_3
+  - arrowTrap_0
+  - arrowTrap_1
+  m_RenderDataMap: {}
+  m_Tag: TileAtlas
+  m_IsVariant: 0

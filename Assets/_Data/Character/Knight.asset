@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aa90fc2ab1f4d941abd411a24ebc9b7, type: 3}
+  m_Name: Knight
+  m_EditorClassIdentifier: 
+  tableNum: 0
+  title: "\uB098\uC774\uD2B8"
+  desc: "\uAC80 \uADF8\uB9AC\uACE0 \uB098"
+  cost: 1
+  basicSkill:
+  - {fileID: 11400000, guid: 0a36a1f6d2378694c8f3bc37c93c0084, type: 2}
+  stat: {fileID: 11400000, guid: dd6d1a01aea1cfe4992a9f9a95ba6a2c, type: 2}
+  Head: HumanShadow#FFFFFF/0:0:0
+  Ears: 
+  Eyes: Human#FFFFFF/0:0:0
+  Body: Human#FFFFFF/0:0:0
+  Hair: Hair2#FFFFFF/0:0:0
+  Armor: HornsKnight#FFFFFF/0:0:0
+  Helmet: HornsKnightHelmet#FFFFFF/0:0:0
+  Weapon: Sword#FFFFFF/0:0:0
+  Shield: 
+  Cape: 
+  Back: 
+  Mask: 
+  Horns: 

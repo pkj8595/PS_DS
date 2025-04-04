@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aa90fc2ab1f4d941abd411a24ebc9b7, type: 3}
+  m_Name: Skeleton
+  m_EditorClassIdentifier: 
+  tableNum: 0
+  title: "\uD574\uACE8 \uAD81\uC218"
+  desc: "\uD5C8\uC57D\uD574 \uBCF4\uC778\uB2E4. \uD65C\uC740 \uB2F9\uAE38 \uC218
+    \uC788\uC744\uAE4C?"
+  cost: 1
+  basicSkill: []
+  stat: {fileID: 0}
+  Head: Skeleton#C7CFDD/0:0:0
+  Ears: Skeleton#C7CFDD/0:0:0
+  Eyes: Skeleton#FFFFFF/0:0:0
+  Body: Skeleton#C7CFDD/0:0:0
+  Hair: 
+  Armor: 
+  Helmet: 
+  Weapon: BattleBow#FFFFFF/0:0:0
+  Shield: 
+  Cape: 
+  Back: 
+  Mask: 
+  Horns: 

@@ -28,13 +28,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4117607941181585914}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 2, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8475222101369129519
 MonoBehaviour:
@@ -52,7 +52,10 @@ MonoBehaviour:
   <ComponentIndex>k__BackingField: 0
   <PredictedSpawn>k__BackingField: {fileID: 0}
   <PredictedOwner>k__BackingField: {fileID: 0}
-  NetworkBehaviours: []
+  NetworkBehaviours:
+  - {fileID: 2759061792589502182}
+  - {fileID: 1348621277}
+  - {fileID: 1348621278}
   InitializedParentNetworkBehaviour: {fileID: 0}
   InitializedNestedNetworkObjects: []
   RuntimeParentNetworkBehaviour: {fileID: 0}
@@ -77,15 +80,15 @@ MonoBehaviour:
   _spectatorInterpolation: 2
   _enableTeleport: 0
   _teleportThreshold: 1
-  <PrefabId>k__BackingField: 65535
+  <PrefabId>k__BackingField: 3
   <SpawnableCollectionId>k__BackingField: 0
   <AssetPathHash>k__BackingField: 7473726319608011331
   <SceneId>k__BackingField: 0
   SerializedTransformProperties:
-    Position: {x: 0, y: 0, z: 0}
-    Rotation: {x: 0, y: 0, z: 0, w: 0}
-    Scale: {x: 0, y: 0, z: 0}
-    IsValid: 0
+    Position: {x: 0, y: 2, z: -2}
+    Rotation: {x: 0, y: 0, z: 0, w: 1}
+    Scale: {x: 1, y: 1, z: 1}
+    IsValid: 1
 --- !u!114 &2759061792589502182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98,9 +101,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d3558aad46c24549bea48d0e3938264, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 255
+  _componentIndexCache: 0
   _addedNetworkObject: {fileID: 8475222101369129519}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 8475222101369129519}
 --- !u!114 &1348621277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,9 +116,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6d656f377f37164d8d7431aa4e43cdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 255
+  _componentIndexCache: 1
   _addedNetworkObject: {fileID: 8475222101369129519}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 8475222101369129519}
 --- !u!114 &1348621278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,9 +131,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c718ab30626bbd648952910f74780a06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 255
+  _componentIndexCache: 2
   _addedNetworkObject: {fileID: 8475222101369129519}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 8475222101369129519}
   _moveRate: 3
 --- !u!143 &5081159371976248031
 CharacterController:
@@ -140,9 +143,16 @@ CharacterController:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4117607941181585914}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Height: 1.85
   m_Radius: 0.5
   m_SlopeLimit: 45

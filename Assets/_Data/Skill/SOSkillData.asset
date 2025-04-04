@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b34152455252e04f857383621705faa, type: 3}
+  m_Name: SOSkillData
+  m_EditorClassIdentifier: 
+  tableNum: 0
+  skillName: "\uADFC\uAC70\uB9AC \uC77C\uBC18\uACF5\uACA9 1"
+  desc: "\uC77C\uBC18 \uACF5\uACA9"
+  icon: {fileID: -555905015, guid: 16b90a5bf3bceb34cbd9d69ccf3dc843, type: 3}
+  coolTime: 1
+  requireMana: 0
+  unitType: 0
+  _castringMotion: 0
+  _trigerMotion: 1
+  skills:
+  - targeting: {fileID: 11400000, guid: 38d7b0330a5169d41aae71401c1bd90a, type: 2}
+    effects:
+    - {fileID: 11400000, guid: 1cadb84ca3851f34bb3ab3ff5011a0b7, type: 2}
