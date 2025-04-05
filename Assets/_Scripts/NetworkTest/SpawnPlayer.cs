@@ -10,7 +10,7 @@ public class SpawnPlayer : NetworkBehaviour
     [SerializeField] private Transform[] _spawnPoints;
     private int _spawnCount;
 
-    NetworkManager _networkManager;
+    [SerializeField] private NetworkManager _networkManager;
 
 
     private void Awake()
