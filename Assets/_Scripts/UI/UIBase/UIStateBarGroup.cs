@@ -44,9 +44,9 @@ public class UIStateBarGroup : UIBase
             Vector3 screenPosition = Camera.main.WorldToScreenPoint(worldPosition);
 
             //화면 노출 여부
-            if (screenPosition.z > 0 &&
-                screenPosition.x > 0 && screenPosition.x < Screen.width &&
-                screenPosition.y > 0 && screenPosition.y < Screen.height)
+            if (0 < screenPosition.z &&
+                0 < screenPosition.x && screenPosition.x < Screen.width &&
+                0 < screenPosition.y && screenPosition.y < Screen.height)
             {
                 //화면에 노출 된다면
                 unit.Value.gameObject.SetActive(true);

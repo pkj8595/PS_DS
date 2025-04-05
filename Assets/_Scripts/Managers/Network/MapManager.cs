@@ -47,7 +47,7 @@ public class MapManager : NetworkBehaviour
             var obj = Managers.Resource.Instantiate("Network/BuildingBase");
             BuildingBase buildingBase = obj.GetComponent<BuildingBase>();
             buildingBase.transform.position = _grid.GetCellCenterWorld(new Vector3Int(cellPos.x, cellPos.y, 0));
-            buildingBase.Init(soData, team);
+            buildingBase.InitRpc(tableKey, team);
             _dicBuilding.Add(cellPos, buildingBase);
             Spawn(obj, client);
             SetBuildingBase(obj, tableKey, team);

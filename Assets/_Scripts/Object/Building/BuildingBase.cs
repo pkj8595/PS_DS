@@ -1,22 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using FishNet.Object.Synchronizing;
+using static Define;
 
 public class BuildingBase : Unit
 {
+
     [SerializeField] private SOBuildingData buildingData;
     [SerializeField] private Collider2D _collider;
     [SerializeField] private SpriteRenderer _spriteRemderer;
-    [field: SerializeField] public Define.ETeam Team { get; set; }
+    public Define.ETeam Team { get => (Define.ETeam)eTeam.Value; set => eTeam.Value = (int)value; }
     [field: SerializeField] public Vector3 StateBarOffset { get; set; }
     [field : SerializeField] public BuildingAniController AniController { get; private set; }
 
-    protected BuildingDamageable _damageable;
+    protected BuildingDamageable _damageable { get; set; }
     public Stat Stat { get; private set; }
     public UnitSkill Skill { get; protected set; } = new();
     public Collider2D Collider { get => _collider; set => _collider = value; }
     public bool IsSelected { get; set; }
 
+
+    private readonly SyncVar<string> DataId = new SyncVar<string>();
+    private readonly SyncVar<int> eTeam = new SyncVar<int>();
 
     private void Awake()
     {
@@ -30,10 +34,33 @@ public class BuildingBase : Unit
         }
     }
 
+    public void InitRpc(string buildingKey, Define.ETeam team)
+    {
+        if (Managers.Data.BuildingDatas.TryGetValue(buildingKey, out SOBuildingData soData))
+        {
+            DataId.Value = buildingKey;
+            Init(soData, team);
+        }
+        else
+            Debug.LogError($"Building data not found for tableKey: {buildingKey}");
+    }
+
+    public override void OnStartClient()
+    {
+        base.OnStartClient();
+        if (Managers.Data.BuildingDatas.TryGetValue(DataId.Value, out SOBuildingData soData))
+        {
+            Init(soData, Team);
+        }
+        else
+            Debug.LogError($"Building data not found for tableKey: {DataId.Value}");
+    }
+
     public virtual void Init(SOBuildingData data, Define.ETeam team)
     {
         buildingData = data;
         _spriteRemderer.sprite = data.tower;
+        Team = team;
 
         Stat.Init(data.stat, OnDead, OnChagneStatValue, OnDeadTarget);
         Skill.Init(Stat.Mana);

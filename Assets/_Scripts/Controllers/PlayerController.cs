@@ -36,41 +36,11 @@ public class PlayerController : NetworkBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             //MapManager.Map.GetGridPos()
-            Debug.Log("call Managers.Map.GetGridPos");
             Vector2Int cellPosition = Managers.Map.GetGridPos(Camera.main.ScreenToWorldPoint(Input.mousePosition));
             string tableKey = "ArrowTower";
-            Debug.Log("Encoding: " + System.Text.Encoding.Default.EncodingName);
             Managers.Map.RpcBuildingRequest(cellPosition, tableKey, Team);
-            SimpleTest();
         }
 
-        if (!IsOwner || !IsSpawned || GetComponent<NetworkObject>() == null)
-        {
-            Debug.Log("Test if (!IsOwner || !IsSpawned || GetComponent<NetworkObject>() == null)");
-            return;
-        }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Test(2);
-        }
-    }
-    [ServerRpc]
-    private void SimpleTest()
-    {
-        Debug.Log("✅ SimpleTest RPC called on server!");
-    }
-
-    [ServerRpc(RequireOwnership = false)]
-    public void Test(int num)
-    {
-        Debug.Log("ServerRpc num : " + num);
-        ObserverTest(num);
-    }
-
-    [ObserversRpc]
-    public void ObserverTest(int num)
-    {
-        Debug.Log("ObserverTest num : " + num);
     }
 
     public void Init(int playerIndex)
