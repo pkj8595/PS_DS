@@ -2,13 +2,16 @@ using FishNet.Object;
 using FishNet.Object.Synchronizing;
 using System.Text;
 using UnityEngine;
+using static Define;
 
 public class PlayerController : NetworkBehaviour
 {
-    public readonly SyncDictionary<Define.EGoodsType, int> _dicGoods = new();
+    public readonly SyncDictionary<EGoodsType, int> _dicGoods = new();
 
-    public int PlayerIndex { get; internal set; }
-    public Define.ETeam Team { get; internal set; }
+    public readonly SyncVar<int> PlayerIndex = new SyncVar<int>(-1);
+    public readonly SyncVar<int> Life = new SyncVar<int>(100);
+    public ETeam Team { get => (ETeam)PlayerIndex.Value; }
+
 
     public override void OnStartClient()
     {
@@ -45,8 +48,7 @@ public class PlayerController : NetworkBehaviour
 
     public void Init(int playerIndex)
     {
-        PlayerIndex = playerIndex;
-        Team = (Define.ETeam)playerIndex;
+        PlayerIndex.Value = playerIndex;
     }
 
     public void RequestBuild(int tableNum, Vector3 position)

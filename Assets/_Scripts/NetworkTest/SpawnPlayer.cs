@@ -2,9 +2,10 @@ using FishNet;
 using FishNet.Connection;
 using FishNet.Managing;
 using FishNet.Object;
+using System;
 using UnityEngine;
 
-public class SpawnPlayer : NetworkBehaviour
+public class SpawnPlayer : MonoBehaviour
 {
     [SerializeField] private GameObject _playerPrefab;
     [SerializeField] private Transform[] _spawnPoints;
@@ -46,8 +47,7 @@ public class SpawnPlayer : NetworkBehaviour
         }
 
         GameObject obj = Instantiate(_playerPrefab);
-        obj.transform.SetPositionAndRotation(_spawnPoints[_spawnCount].position,
-                                             _spawnPoints[_spawnCount].rotation);
+        SetSpawn(obj.transform, out Vector3 position, out Quaternion rotation);
 
         if (obj.TryGetComponent<PlayerController>(out var playerController))
         {
@@ -59,28 +59,41 @@ public class SpawnPlayer : NetworkBehaviour
         }
         else
         {
+            _networkManager.ServerManager.Despawn(obj);
             Debug.Log($"스폰 실패 PlayerController is null");
         }
 
     }
 
-    public override void OnStartClient()
+    private void SetSpawn(Transform prefab, out Vector3 pos, out Quaternion rot)
     {
-        base.OnStartClient();
-        Debug.Log($"{this.name} 클라시작");
-        
+        //No spawns specified.
+        if (_spawnPoints.Length == 0)
+        {
+            SetSpawnUsingPrefab(prefab, out pos, out rot);
+            return;
+        }
 
+        Transform spawnPos = _spawnPoints[_spawnCount];
+        if (spawnPos == null)
+        {
+            SetSpawnUsingPrefab(prefab, out pos, out rot);
+        }
+        else
+        {
+            pos = spawnPos.position;
+            rot = spawnPos.rotation;
+        }
+
+        //Increase next spawn and reset if needed.
+        _spawnCount++;
+        if (_spawnCount >= _spawnPoints.Length)
+            _spawnCount = 0;
     }
-    public override void OnStartServer()
+
+    private void SetSpawnUsingPrefab(Transform prefab, out Vector3 pos, out Quaternion rot)
     {
-        base.OnStartServer();
-        Debug.Log($"{this.name} 서버시작");
-
-    }
-
-
-    private void PlayerSpawn(NetworkConnection client = null)
-    {
-       
+        pos = prefab.position;
+        rot = prefab.rotation;
     }
 }
