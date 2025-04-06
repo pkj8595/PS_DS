@@ -6,9 +6,10 @@ using UnityEngine;
 
 public class UnitAI
 {
-
+    //option
+    [field: SerializeField] public IDamageable LockTarget { get; set; }
+    public bool HasTarget => LockTarget != null && !LockTarget.IsDead;
     public PawnBase Pawn { get; private set; }
-    public bool HasTarget => Pawn.HasTarget;
     public float SearchRange => Pawn.SearchRange;
 
     private float _cooltime = 0.0f;
@@ -35,7 +36,7 @@ public class UnitAI
     /// </summary>
     public bool CheckOutRangeTarget() 
     {
-        if (SearchRange + 3 < Vector3.Distance(Pawn.LockTarget.Transform.position, Pawn.transform.position) && Pawn.Team == Define.ETeam.Player1)
+        if (SearchRange + 3 < Vector3.Distance(LockTarget.Transform.position, Pawn.transform.position) && Pawn.Team == Define.ETeam.Player1)
         {
             //SetState(GetReturnToBase());
             return true;

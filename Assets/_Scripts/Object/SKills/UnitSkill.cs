@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnitSkill
+public class UnitSkill : MonoBehaviour
 {
     public List<Skill> SkillList { get; private set; } = new(Define.Pawn_Rune_Limit_Count);
     private Skill _currentSkill;

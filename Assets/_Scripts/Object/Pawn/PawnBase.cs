@@ -12,23 +12,17 @@ public abstract class PawnBase :Unit, IDamageable
     //설정
     [field : SerializeField] protected Vector3 DestPos { get; set; }
     [SerializeField] protected Transform _projectileTrans;
-    public Transform ProjectileTF => _projectileTrans;
 
     //pawn 기능
     [field : SerializeField] public PawnAnimationController AniController { get; private set; }
     [field : SerializeField] public PawnMove _pawnMove { get; set; }
-
     public PawnStat PawnStat { get; protected set; }
-    public UnitSkill PawnSkills { get; } = new UnitSkill();
+    public UnitSkill PawnSkills;
     public UnitAI AI { get; private set; }
 
-    //option
-    [field : SerializeField] public IDamageable LockTarget { get; set; }
-    public bool HasTarget => LockTarget != null && !LockTarget.IsDead;
     public float SearchRange { get => PawnStat.SearchRange; }
-    public float LastCombatTime { get; set; } = 0f;
     public Vector3 StateBarOffset => Vector3.up * 1.2f;
-    private float speed = 2f;
+    public Transform ProjectileTF => _projectileTrans;
 
     //component
     [SerializeField] private Collider2D _collider;
@@ -59,16 +53,18 @@ public abstract class PawnBase :Unit, IDamageable
         if (PawnStat == null)
             PawnStat = gameObject.GetOrAddComponent<PawnStat>();
 
+        if (_pawnMove == null)
+            _pawnMove = GetComponent<PawnMove>();
 
         if (_collider == null)
-        {
             _collider = GetComponent<Collider2D>();
-        }
 
-        if (_pawnMove == null)
-        {
-            _pawnMove = GetComponent<PawnMove>();
-        }
+        if (PawnSkills == null)
+            PawnSkills = gameObject.GetOrAddComponent<UnitSkill>();
+
+
+        PawnSkills.Init(PawnStat.Mana);
+        PawnSkills.SetBaseSkill(new Skill(CharacterData.basicSkill[0],PawnStat));
 
         //table data setting
         CharacterData = data;
@@ -77,8 +73,6 @@ public abstract class PawnBase :Unit, IDamageable
         AI ??= new UnitAI();
         AI.Init(this);
         
-        PawnSkills.Init(PawnStat.Mana);
-        PawnSkills.SetBaseSkill(new Skill(CharacterData.basicSkill[0],PawnStat));
 
         //초기화 데이터 리셋
         if (!isUpgrade)
@@ -117,7 +111,6 @@ public abstract class PawnBase :Unit, IDamageable
     {
         SetTriggerAni(Define.EPawnAniTriger.Hit);
         PawnStat.ApplyDamageMessage(ref message);
-        LastCombatTime = Time.time;
 
         return false;
     }
@@ -128,7 +121,6 @@ public abstract class PawnBase :Unit, IDamageable
     public virtual void EndAniAttack()
     {
         PawnSkills.ClearCurrentSkill();
-        LastCombatTime = Time.time;
         //AI.SetState(AI.GetIdleState());
     }
     #endregion
@@ -148,10 +140,7 @@ public abstract class PawnBase :Unit, IDamageable
 
     private void OnChangeStatValue()
     {
-        speed = PawnStat.MoveSpeed;
     }
-
-
 
     private void OnLive()
     {
@@ -170,8 +159,6 @@ public abstract class PawnBase :Unit, IDamageable
     {
         
     }
-
-    
 
     protected virtual void OnMove(Vector3 destPosition, bool isChase)
     {

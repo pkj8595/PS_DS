@@ -12,7 +12,7 @@ public class BuildingBase : Unit
 
     protected BuildingDamageable _damageable { get; set; }
     public Stat Stat { get; private set; }
-    public UnitSkill Skill { get; protected set; } = new();
+    public UnitSkill Skill { get; protected set; }
     public Collider2D Collider { get => _collider; set => _collider = value; }
     public bool IsSelected { get; set; }
 
@@ -26,6 +26,7 @@ public class BuildingBase : Unit
         {
             _damageable = GetComponent<BuildingDamageable>();
         }
+        
     }
 
     public void InitRpc(string buildingKey, Define.ETeam team)
@@ -57,6 +58,10 @@ public class BuildingBase : Unit
         Team = team;
 
         Stat.Init(data.stat, OnDead, OnChagneStatValue, OnDeadTarget);
+
+        if (Skill == null)
+            Skill = gameObject.GetOrAddComponent<UnitSkill>();
+
         Skill.Init(Stat.Mana);
 
         if (data.isDamageable)
