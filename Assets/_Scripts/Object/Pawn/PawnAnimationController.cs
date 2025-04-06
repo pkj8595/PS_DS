@@ -13,6 +13,19 @@ public class PawnAnimationController : MonoBehaviour, ISkillMotion
     private static Material DefaultMaterial;
     private static Material BlinkMaterial;
 
+    [SerializeField] protected Define.EPawnAniState _state = Define.EPawnAniState.Idle;
+
+    public virtual Define.EPawnAniState State
+    {
+        get { return _state; }
+        set
+        {
+            _state = value;
+            SetAniState(_state);
+        }
+    }
+
+
     public bool IsPlaying { get; set; }
 
     //todo : particleManager 만들기
@@ -50,6 +63,11 @@ public class PawnAnimationController : MonoBehaviour, ISkillMotion
     public void SetAniState(Define.EPawnAniState state)
     {
         _animator.Play(state.ToStr());
+        if (state == Define.EPawnAniState.Dead)
+        {
+            IsPlaying = false;
+        }
+       
     }
 
     public void SetAniTrigger(Define.EPawnAniTriger trigger)

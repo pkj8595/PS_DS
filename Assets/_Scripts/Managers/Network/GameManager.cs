@@ -14,7 +14,7 @@ public class GameManager : NetworkBehaviour
     }
 
     public List<PlayerController> _players = new();
-    public readonly SyncVar<float> GameTimer = new();
+    public readonly SyncTimer GameTimer = new();
     public readonly SyncVar<EGameState> GameState = new();
 
     public override void OnStartClient()

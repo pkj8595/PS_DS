@@ -4,11 +4,9 @@ using static Define;
 
 public class BuildingBase : Unit
 {
-
     [SerializeField] private SOBuildingData buildingData;
     [SerializeField] private Collider2D _collider;
     [SerializeField] private SpriteRenderer _spriteRemderer;
-    public Define.ETeam Team { get => (Define.ETeam)eTeam.Value; set => eTeam.Value = (int)value; }
     [field: SerializeField] public Vector3 StateBarOffset { get; set; }
     [field : SerializeField] public BuildingAniController AniController { get; private set; }
 
@@ -17,10 +15,6 @@ public class BuildingBase : Unit
     public UnitSkill Skill { get; protected set; } = new();
     public Collider2D Collider { get => _collider; set => _collider = value; }
     public bool IsSelected { get; set; }
-
-
-    private readonly SyncVar<string> DataId = new SyncVar<string>();
-    private readonly SyncVar<int> eTeam = new SyncVar<int>();
 
     private void Awake()
     {
@@ -85,33 +79,6 @@ public class BuildingBase : Unit
     }
 
 
-    private void DestroyComponent<T>() where T : MonoBehaviour
-    {
-        var skill = GetComponent<T>();
-        if (skill != null)
-        {
-            Destroy(skill);
-        }
-    }
-
-   /* public override bool UpgradeUnit()
-    {
-        *//*if (BuildingData.upgradeNum == 0 || Team == Define.ETeam.Enemy)
-        {
-            Managers.UI.ShowToastMessage("적은 업그레이드 할 수 없습니다.");
-            return false;
-        }
-
-        if (Managers.Game.Inven.SpendItem(BuildingData.upgrade_goods, BuildingData.upgrade_goods_amount))
-        {
-            Init(BuildingData.upgradeNum);
-            return true;
-        }*//*
-
-        Managers.UI.ShowToastMessage("업그레이드 비용이 부족합니다.");
-        return false;
-    }*/
-
     private void OnChagneStatValue()
     {
 
@@ -144,15 +111,4 @@ public class BuildingBase : Unit
         gameObject.SetActive(false);
     }
 
-    public void OnSelect()
-    {
-        IsSelected = true;
-    }
-
-    public void OnDeSelect()
-    {
-        IsSelected = false;
-    }
-
-    
 }

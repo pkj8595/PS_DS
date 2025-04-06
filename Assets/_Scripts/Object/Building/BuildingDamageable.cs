@@ -9,7 +9,7 @@ public class BuildingDamageable : NetworkBehaviour, IDamageable
     [SerializeField] private Vector3 BuildingStateBarOffset;
     public Define.ETeam Team { get=> _buildingBase.Team;}
     public Vector3 StateBarOffset => _buildingBase.StateBarOffset;
-    public Transform ProjectileTF => throw new System.NotImplementedException();
+    [field: SerializeField] public Transform ProjectileTF {get;set; }
     public Stat Stat => _buildingBase.Stat;
     public ISkillMotion SkillMotion => _buildingBase.AniController;
     public Transform Transform => transform;

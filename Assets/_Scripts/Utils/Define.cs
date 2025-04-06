@@ -50,6 +50,14 @@ public class Define
         Cool
     }
 
+    public enum EBuildingAniState
+    {
+        Idle,
+        Ready,
+        Dead,
+        Casting
+    }
+
     public enum Scene
     {
         Unknown,

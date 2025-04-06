@@ -1,6 +1,5 @@
 using FishNet.Object;
-using System.Collections;
-using System.Collections.Generic;
+using FishNet.Object.Synchronizing;
 using UnityEngine;
 
 public interface IDamageable
@@ -24,5 +23,8 @@ public interface IDamageable
 
 public class Unit : NetworkBehaviour
 {
+    public Define.ETeam Team { get => (Define.ETeam)eTeam.Value; set => eTeam.Value = (int)value; }
+    protected readonly SyncVar<int> eTeam = new SyncVar<int>();
+    protected readonly SyncVar<string> DataId = new SyncVar<string>();
 
 }

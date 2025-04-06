@@ -14,6 +14,31 @@ public class BuildingAniController : MonoBehaviour, ISkillMotion
         if (_animator == null)
             _animator = GetComponent<Animator>();
     }
+    private void OnDisable()
+    {
+        IsPlaying = false;
+        
+    }
+
+    public void TrigerAnimation(Define.EBuildingAniState trigetAni)
+    {
+        switch (trigetAni)
+        {
+            case Define.EBuildingAniState.Idle:
+                _animator.SetTrigger("Idle");
+                break;
+            case Define.EBuildingAniState.Ready:
+                _animator.SetTrigger("Ready");
+                break;
+            case Define.EBuildingAniState.Dead:
+                _animator.SetTrigger("Dead");
+                IsPlaying = false;
+                break;
+            case Define.EBuildingAniState.Casting:
+                _animator.SetTrigger("Casting");
+                break;
+        }
+    }
 
     public async UniTask RunAnimation(ESkillMotionTriger triger, float delay)
     {
@@ -22,7 +47,7 @@ public class BuildingAniController : MonoBehaviour, ISkillMotion
         {
             case ESkillMotionTriger.Cast:
                 _animator.SetTrigger("Cast");
-                await UniTask.Delay((int)(delay * 1000));
+                await UniTask.Delay((int)(delay * 1000), cancellationToken: destroyCancellationToken);
                 break;
             case ESkillMotionTriger.MeleeAttack:
                 _animator.SetTrigger("MeleeAttack");

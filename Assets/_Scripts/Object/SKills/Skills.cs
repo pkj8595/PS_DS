@@ -26,12 +26,12 @@ public class Skill
         data = skillData;
         LastRunTime = -1000f;
         _stat = stat;
-        _stat.SetActionOnChangeValue(CulcalateCoolTime);
-        CulcalateCoolTime();
+        _stat.SetActionOnChangeValue(CalculateCoolTime);
+        CalculateCoolTime();
       
     }
 
-    public void CulcalateCoolTime()
+    public void CalculateCoolTime()
     {
         if (IsBaseSkill)
             reducedCoolTime = BaseCoolTime / (1f + _stat.GetBaseSkillCooldown());
@@ -39,7 +39,7 @@ public class Skill
             reducedCoolTime = BaseCoolTime / (1f + _stat.GetSkillCooldown());
     }
 
-    public float GetCulcalatePercentCoolTime()
+    public float GetCooldownProgress()
     {
         return 1f - Mathf.Clamp(((Time.time - LastRunTime) / reducedCoolTime), 0f, 1f);
     }
@@ -87,7 +87,7 @@ public class Skill
         LastRunTime = -1000f;
     }
 
-    public bool CheckSkillCondition(IDamageable caster)
+    public bool StartSkill(IDamageable caster)
     {
         if (IsProcessing)
         {

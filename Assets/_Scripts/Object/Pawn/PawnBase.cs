@@ -9,12 +9,8 @@ public abstract class PawnBase :Unit, IDamageable
 {
     //data
     public SOCharacterData CharacterData { get; private set; }
-    public Define.ETeam Team { get; set; }
-
     //설정
     [field : SerializeField] protected Vector3 DestPos { get; set; }
-    [field : SerializeField] public Vector3 OriginPosition { get; set; }
-    [SerializeField] protected Define.EPawnAniState _state = Define.EPawnAniState.Idle;
     [SerializeField] protected Transform _projectileTrans;
     public Transform ProjectileTF => _projectileTrans;
 
@@ -31,33 +27,12 @@ public abstract class PawnBase :Unit, IDamageable
     public bool HasTarget => LockTarget != null && !LockTarget.IsDead;
     public float SearchRange { get => PawnStat.SearchRange; }
     public float LastCombatTime { get; set; } = 0f;
-    public Action OnDeadAction { get; set; }
     public Vector3 StateBarOffset => Vector3.up * 1.2f;
     private float speed = 2f;
 
     //component
     [SerializeField] private Collider2D _collider;
     [field: SerializeField] public string AIStateStr { get; set; }
-
-    public bool IsSelected { get; set; }
-    public virtual Define.EPawnAniState State
-    {
-        get { return _state; }
-        set
-        {
-            _state = value;
-            if (_state == Define.EPawnAniState.Ready || _state == Define.EPawnAniState.Idle)
-            {
-                if (Time.time < LastCombatTime + 5f)
-                    _state = Define.EPawnAniState.Ready;
-                else
-                    _state = Define.EPawnAniState.Idle;
-            }
-            
-            AniController.SetAniState(_state);
-        }
-    }
-
     public Stat Stat => PawnStat;
 
     public virtual void SetTriggerAni(Define.EPawnAniTriger trigger)
@@ -163,7 +138,6 @@ public abstract class PawnBase :Unit, IDamageable
     /// </summary>
     private void OnDead()
     {
-        OnDeadAction?.Invoke();
         //AI.SetState(AI.GetDeadState());
         UIStateBarGroup uiStatebarGroup = Managers.UI.GetUI<UIStateBarGroup>() as UIStateBarGroup;
         uiStatebarGroup.SetActive(this, false);
@@ -197,12 +171,7 @@ public abstract class PawnBase :Unit, IDamageable
         
     }
 
-    public void SetDestination(Vector3 position, bool isChase = true)
-    {
-        if (DestPos == position)
-            return;
-        
-    }
+    
 
     protected virtual void OnMove(Vector3 destPosition, bool isChase)
     {
@@ -212,7 +181,6 @@ public abstract class PawnBase :Unit, IDamageable
         _pawnMove.Move(destPosition);
         
     }
-
 
     /// <summary>
     /// 이동 중지    /// </summary>

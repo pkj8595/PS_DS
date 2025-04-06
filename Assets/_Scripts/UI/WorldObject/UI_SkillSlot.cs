@@ -24,7 +24,7 @@ public class UI_SkillSlot : UI_Slot
     {
         if (this.gameObject.activeSelf && _skill != null)
         {
-            float percent = _skill.GetCulcalatePercentCoolTime();
+            float percent = _skill.GetCooldownProgress();
             _imgCoolTime.fillAmount = percent;
             _txtCoolTime.gameObject.SetActive(percent != 0f);
             _txtCoolTime.text = (_skill.CoolTime - (Time.time - _skill.LastRunTime)).ToString("0.0");

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ObjectManager : NetworkBehaviour
 {
-    public List<GameObject> AllUnits { get; private set; } = new List<GameObject>();
-    public List<GameObject> AllBuildings { get; private set; } = new List<GameObject>();
+    public List<Unit> AllUnits { get; private set; } = new List<Unit>();
+    public List<Unit> AllBuildings { get; private set; } = new List<Unit>();
     public Dictionary<string, int> PlayerResources { get; private set; } = new Dictionary<string, int>();
 
     public override void OnStartClient()
@@ -19,24 +19,7 @@ public class ObjectManager : NetworkBehaviour
         Debug.Log($"{this.name} 서버시작");
     }
 
-    // 유닛 스폰 예시
-    [ServerRpc]
-    public void SpawnUnit(Vector3 position, GameObject unitPrefab)
-    {
-        GameObject unit = Instantiate(unitPrefab, position, Quaternion.identity);
-        AllUnits.Add(unit);  // 리스트에 유닛 추가
-        Spawn(unit);         // 네트워크 오브젝트로 동기화
-    }
-
-    // 건물 생성 예시
-    [ServerRpc]
-    public void SpawnBuilding(Vector3 position, GameObject buildingPrefab)
-    {
-        GameObject building = Instantiate(buildingPrefab, position, Quaternion.identity);
-        AllBuildings.Add(building);
-        Spawn(building);
-    }
-
+   
     // 자원 획득 예시
     public void AddResource(string resourceType, int amount)
     {

@@ -7,8 +7,8 @@ using static Define;
 public class MapManager : NetworkBehaviour
 {
     [SerializeField] private Grid _grid;
-    [SerializeField] private Dictionary<Vector2Int, MapObject> _dicMapObject = new();
-    [SerializeField] private Dictionary<Vector2, BuildingBase> _dicBuilding = new();
+    [SerializeField] private Dictionary<Vector2Int, MapObject> _dicMapObject = new();//자원
+    [SerializeField] private Dictionary<Vector2, BuildingBase> _dicBuilding = new();//건물
 
     public override void OnStartClient()
     {
