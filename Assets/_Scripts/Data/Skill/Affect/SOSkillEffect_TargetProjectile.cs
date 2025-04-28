@@ -9,7 +9,7 @@ public class SOSkillEffect_TargetProjectile : SkillEffectBase
     public float speed;
 
     public int damagePer;
-    public override async UniTask ApplyEffect(IDamageable caster, IDamageable target)
+    public override async UniTask ApplyEffect(IAttackable caster, IDamageable target)
     {
         GameObject projectile = Instantiate(projectilePrafab, 
                                             caster.ProjectileTF.position, 

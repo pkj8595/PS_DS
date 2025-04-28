@@ -40,7 +40,20 @@ public static class Extension
             return Define.ETargetType.Enemy;
     }
 
-   
+    /// <summary>
+    /// 팀이 다를경우 타겟 타입을 Enemy로 반환
+    /// </summary>
+    /// <param name="pawnTeam"></param>
+    /// <returns></returns>
+    public static Define.ETargetType GetTargetType(this IAttackable unit, Define.ETeam pawnTeam)
+    {
+        if (unit.Team == pawnTeam)
+            return Define.ETargetType.Ally;
+        else
+            return Define.ETargetType.Enemy;
+    }
+
+
 
 
 

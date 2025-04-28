@@ -26,7 +26,7 @@ public class Skill
         data = skillData;
         LastRunTime = -1000f;
         _stat = stat;
-        _stat.SetActionOnChangeValue(CalculateCoolTime);
+        //_stat.OnManaChangedEvent += CalculateCoolTime;
         CalculateCoolTime();
       
     }
@@ -41,7 +41,7 @@ public class Skill
 
     public float GetCooldownProgress()
     {
-        return 1f - Mathf.Clamp(((Time.time - LastRunTime) / reducedCoolTime), 0f, 1f);
+        return 1f - Mathf.Clamp01(((Time.time - LastRunTime) / reducedCoolTime));
     }
 
     /// <summary>
@@ -87,7 +87,7 @@ public class Skill
         LastRunTime = -1000f;
     }
 
-    public bool StartSkill(IDamageable caster)
+    public bool StartSkill(IAttackable caster)
     {
         if (IsProcessing)
         {
@@ -111,7 +111,7 @@ public class Skill
         return true;
     }
 
-    public async UniTaskVoid StartSkillProcess(IDamageable caster)
+    public async UniTaskVoid StartSkillProcess(IAttackable caster)
     {
         IsProcessing = true;
         await Cast(caster);
@@ -119,7 +119,7 @@ public class Skill
         LastRunTime = Time.time;
     }
 
-    public async UniTask Cast(IDamageable caster)
+    public async UniTask Cast(IAttackable caster)
     {
         SOSkillData skillData = data;
 

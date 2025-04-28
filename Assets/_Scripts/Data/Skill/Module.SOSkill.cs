@@ -4,17 +4,17 @@ using UnityEngine;
 
 public abstract class SkillEffectBase : SOSkillModuleBase
 {
-    public abstract UniTask ApplyEffect(IDamageable caster, IDamageable target);
+    public abstract UniTask ApplyEffect(IAttackable caster, IDamageable target);
 }
 
 public abstract class SkillTargetingBase : SOSkillModuleBase
 {
-    public abstract List<IDamageable> FindTargets(IDamageable caster);
+    public abstract List<IDamageable> FindTargets(IAttackable caster);
 }
 
 public abstract class SkillConditionBase : SOSkillModuleBase
 {
-    public abstract bool IsConditionMet(IDamageable caster);
-    public abstract void ConsumeResources(IDamageable caster);
+    public abstract bool IsConditionMet(IAttackable caster);
+    public abstract void ConsumeResources(IAttackable caster);
 }
 

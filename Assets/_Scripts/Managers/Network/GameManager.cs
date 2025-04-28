@@ -32,6 +32,7 @@ public class GameManager : NetworkBehaviour
     {
         _players.Add(playerController);
         playerController.PlayerIndex.Value++;
+        
     }
 
     /// <summary>

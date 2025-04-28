@@ -6,10 +6,10 @@ using UnityEngine;
 public class SOSkillEffect_Damage : SkillEffectBase
 {
     public int damagePer;
-    public override UniTask ApplyEffect(IDamageable caster, IDamageable target)
+    public override UniTask ApplyEffect(IAttackable caster, IDamageable target)
     {
         //todo
-        target.GetIStat().Hp -= damagePer;
+        target.Stat.Hp -= damagePer;
         return UniTask.CompletedTask;
     }
 

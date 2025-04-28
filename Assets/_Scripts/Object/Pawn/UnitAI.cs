@@ -10,7 +10,7 @@ public class UnitAI
     [field: SerializeField] public IDamageable LockTarget { get; set; }
     public bool HasTarget => LockTarget != null && !LockTarget.IsDead;
     public PawnBase Pawn { get; private set; }
-    public float SearchRange => Pawn.SearchRange;
+    public float SearchRange;
 
     private float _cooltime = 0.0f;
     public void Init(PawnBase pawn)

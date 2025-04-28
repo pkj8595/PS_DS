@@ -20,7 +20,7 @@ public class BuildingBase : Unit
     {
         if (Stat == null)
         {
-            Stat = gameObject.GetComponent<PawnStat>();
+            Stat = gameObject.GetComponent<Stat>();
         }
         if (_damageable == null)
         {
@@ -33,7 +33,7 @@ public class BuildingBase : Unit
     {
         if (Managers.Data.BuildingDatas.TryGetValue(buildingKey, out SOBuildingData soData))
         {
-            DataId.Value = buildingKey;
+            //DataId = buildingKey;
             Init(soData, team);
         }
         else
@@ -43,21 +43,21 @@ public class BuildingBase : Unit
     public override void OnStartClient()
     {
         base.OnStartClient();
-        if (Managers.Data.BuildingDatas.TryGetValue(DataId.Value, out SOBuildingData soData))
+       /* if (Managers.Data.BuildingDatas.TryGetValue(DataId.Value, out SOBuildingData soData))
         {
             Init(soData, Team);
         }
         else
-            Debug.LogError($"Building data not found for tableKey: {DataId.Value}");
+            Debug.LogError($"Building data not found for tableKey: {DataId.Value}");*/
     }
 
     public virtual void Init(SOBuildingData data, Define.ETeam team)
     {
         buildingData = data;
         _spriteRemderer.sprite = data.tower;
-        Team = team;
+        //Team = team;
 
-        Stat.Init(data.stat, OnDead, OnChagneStatValue, OnDeadTarget);
+        Stat.InitializeFromSO(data.stat);
 
         if (Skill == null)
             Skill = gameObject.GetOrAddComponent<UnitSkill>();

@@ -45,11 +45,11 @@ public class UI_HPbar : MonoBehaviour
         ShowHpColor(Unit);
         rectTransform.position = position;
 
-        float hpPercent = Utils.Percent(Unit.GetIStat().Hp, Unit.GetIStat().MaxHp);
-        float mpPercent = Utils.Percent(Unit.GetIStat().Mana, Unit.GetIStat().MaxMana);
+        float hpPercent = Utils.Percent(Unit.Stat.Hp, Unit.Stat.MaxHp);
+        float mpPercent = Utils.Percent(Unit.Stat.Mana, Unit.Stat.MaxMana);
         imgHp.rectTransform.localScale = new Vector2(hpPercent, 1f);
         imgMp.rectTransform.localScale = new Vector2(mpPercent, 1f);
-        txtHp.text = ((int)Unit.GetIStat().Hp).ToString();
+        txtHp.text = ((int)Unit.Stat.Hp).ToString();
 
         UpdateSecondBar(imgHpSecond.rectTransform, ref _hpSecondPercent, hpPercent);
         UpdateSecondBar(imgMpSecond.rectTransform, ref _mpSecondPercent, mpPercent);

@@ -82,7 +82,7 @@ public class PawnAnimationController : MonoBehaviour, ISkillMotion
 
     public void OnEndAttack()
     {
-        _pawnBase.EndAniAttack();
+        //_pawnBase.EndAniAttack();
     }
 
     public Sprite GetIdleSprite()

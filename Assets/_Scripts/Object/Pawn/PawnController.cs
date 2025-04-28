@@ -9,7 +9,7 @@ public class PawnController : PawnBase
     public int _testCharacterNum;
 
 
-    public override void Update()
+   /* public override void Update()
     {
         base.Update();
         
@@ -17,7 +17,7 @@ public class PawnController : PawnBase
         {
             OnMove(Camera.main.ScreenToWorldPoint(Input.mousePosition), false);
         }
-    }
+    }*/
 
 
 }

@@ -10,7 +10,7 @@ public class SOSkillEffect_ForwardProjectile : SkillEffectBase
     public float lifeTime = 5f;
     public float damageAmount;
 
-    public override async UniTask ApplyEffect(IDamageable caster, IDamageable target)
+    public override async UniTask ApplyEffect(IAttackable caster, IDamageable target)
     {
         GameObject projectile = GameObject.Instantiate(projectilePrefab, caster.Transform.position, Quaternion.identity);
         var projectileComponent = projectile.GetComponent<ProjectileComponent>();
