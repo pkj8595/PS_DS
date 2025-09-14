@@ -48,7 +48,7 @@ public class PawnDamageable : NetworkBehaviour, IDamageable
 
     public bool ApplyTakeDamage(DamageMessage message)
     {
-        _pawnBase.Stat.ReceiveDamage(ref message);
+        //_pawnBase.Stat.ReceiveDamage(ref message);
         return false;
     }
 

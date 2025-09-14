@@ -135,7 +135,6 @@ GameObject:
   - component: {fileID: 8800404112707068409}
   - component: {fileID: 6727329488701924752}
   - component: {fileID: 3564602290250648614}
-  - component: {fileID: 4764749694859828799}
   - component: {fileID: 6662888363850934884}
   - component: {fileID: 6457949225105350020}
   m_Layer: 0
@@ -180,7 +179,6 @@ MonoBehaviour:
   buildingData: {fileID: 0}
   _collider: {fileID: 1463313421502963044}
   _spriteRemderer: {fileID: 5438058385908814766}
-  <Team>k__BackingField: 0
   <StateBarOffset>k__BackingField: {x: 0, y: 0, z: 0}
   <AniController>k__BackingField: {fileID: 0}
 --- !u!114 &3564602290250648614
@@ -201,7 +199,7 @@ MonoBehaviour:
   <PredictedOwner>k__BackingField: {fileID: 0}
   NetworkBehaviours:
   - {fileID: 6727329488701924752}
-  - {fileID: 4764749694859828799}
+  - {fileID: 0}
   - {fileID: 6662888363850934884}
   InitializedParentNetworkBehaviour: {fileID: 0}
   InitializedNestedNetworkObjects: []
@@ -236,24 +234,6 @@ MonoBehaviour:
     Rotation: {x: 0, y: 0, z: 0, w: 1}
     Scale: {x: 1, y: 1, z: 1}
     IsValid: 1
---- !u!114 &4764749694859828799
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3882712061581163071}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fb9ee8eaab90ac42be9e7d98bd1b9c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _componentIndexCache: 1
-  _addedNetworkObject: {fileID: 3564602290250648614}
-  _networkObjectCache: {fileID: 3564602290250648614}
-  _hp: 0
-  _mana: 0
-  <KillCount>k__BackingField: 0
 --- !u!114 &6662888363850934884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,6 +250,7 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 3564602290250648614}
   _networkObjectCache: {fileID: 3564602290250648614}
   BuildingStateBarOffset: {x: 0, y: 0, z: 0}
+  <ProjectileTF>k__BackingField: {fileID: 0}
 --- !u!114 &6457949225105350020
 MonoBehaviour:
   m_ObjectHideFlags: 0

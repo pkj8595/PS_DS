@@ -57,29 +57,29 @@ public class BuildingBase : Unit
         _spriteRemderer.sprite = data.tower;
         //Team = team;
 
-        Stat.InitializeFromSO(data.stat);
+        //Stat.Init(data.stat,null,null,null);
 
         if (Skill == null)
             Skill = gameObject.GetOrAddComponent<UnitSkill>();
 
-        Skill.Init(Stat.Mana);
+        //Skill.Init(Stat.Mana);
 
-        if (data.isDamageable)
-        {
-            if (_collider == null)
-                _collider = GetComponent<Collider2D>();
-            _damageable.enabled = true;
-            _damageable.Init(this);
+        //if (data.isDamageable)
+        //{
+        //    if (_collider == null)
+        //        _collider = GetComponent<Collider2D>();
+        //    _damageable.enabled = true;
+        //    _damageable.Init(this);
 
-            UIStateBarGroup uiStatebarGroup = Managers.UI.ShowUI<UIStateBarGroup>() as UIStateBarGroup;
-            uiStatebarGroup.AddUnit(_damageable);
-        }
-        else
-        {
-            _damageable.enabled = false;
-            UIStateBarGroup uiStatebarGroup = Managers.UI.ShowUI<UIStateBarGroup>() as UIStateBarGroup;
-            uiStatebarGroup.RemoveUnit(_damageable);
-        }
+        //    UIStateBarGroup uiStatebarGroup = Managers.UI.ShowUI<UIStateBarGroup>() as UIStateBarGroup;
+        //    uiStatebarGroup.AddUnit(_damageable);
+        //}
+        //else
+        //{
+        //    _damageable.enabled = false;
+        //    UIStateBarGroup uiStatebarGroup = Managers.UI.ShowUI<UIStateBarGroup>() as UIStateBarGroup;
+        //    uiStatebarGroup.RemoveUnit(_damageable);
+        //}
 
     }
 

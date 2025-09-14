@@ -24,7 +24,7 @@ public class BuildingDamageable : NetworkBehaviour, IDamageable
 
     public virtual bool ApplyTakeDamage(DamageMessage message)
     {
-        _buildingBase.Stat.ReceiveDamage(ref message);
+        //_buildingBase.Stat.ReceiveDamage(ref message);
 
         return false;
     }
